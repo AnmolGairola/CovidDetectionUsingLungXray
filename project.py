@@ -4,10 +4,6 @@ from skimage import io
 import matplotlib.pyplot as plt #importing matplotlib
 import numpy as np
 
-# Save image in set directory
-# Read RGB image
-#img = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\dataset\\covid\\covid (2).jpeg') 
-
 
 covidList = []
 normalList = []
@@ -51,6 +47,9 @@ listofzeros = [0] * len(normalList)
 
 plt.scatter(covidList, listofones)
 plt.scatter(normalList, listofzeros)
+plt.scatter(min(normalList),0,s=50,c="red")
+
+#test here -------------------------------------------------------------------
 
 timg = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\CovidDetectionUsingLungXray\\dataset\\covid\\66.png')
 
@@ -67,5 +66,11 @@ print(count, bruh)
 testList.append(count)   
 
 plt.scatter(testList, 0, s=100) 
+
+if testList[0] < min(normalList):
+    print("Covid positive")
+
+else:
+    print("covid negative")
 
     
