@@ -12,10 +12,11 @@ import numpy as np
 covidList = []
 normalList = []
 
+
 limit = 0.04
 for bruh in range(0,28):
 
-    img = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\dataset\\normal\\'+str(bruh)+'.jpeg')
+    img = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\CovidDetectionUsingLungXray\\dataset\\normal\\'+str(bruh)+'.jpeg')
     img = color.rgb2gray(img)
     count = 0
     for i in img:
@@ -31,7 +32,7 @@ for bruh in range(0,28):
 
 for bruh in range(0,36):
 
-    img = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\dataset\\covid\\'+str(bruh)+'.jpeg')
+    img = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\CovidDetectionUsingLungXray\\dataset\\covid\\'+str(bruh)+'.jpeg')
     img = color.rgb2gray(img)
     count = 0
     for i in img:
@@ -47,20 +48,24 @@ for bruh in range(0,36):
 listofones = [0] * len(covidList)
 listofzeros = [0] * len(normalList)
 
-#np.savetxt('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\dataCovid.csv', (covidList, listofones), delimiter=',')
-#np.savetxt('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\dataNormal.csv', (normalList, listofzeros), delimiter=',')
 
 plt.scatter(covidList, listofones)
 plt.scatter(normalList, listofzeros)
 
-#plt.hist(img.ravel(), bins=256, range=(0.0, 1.0), fc='k', ec='k') #calculating histogram
+timg = cv2.imread('C:\\Users\\hp\\Desktop\\College\\Sem5\\image processing\\project\\CovidDetectionUsingLungXray\\dataset\\covid\\66.png')
 
-# Output img with window name as 'image'
-#cv2.imshow('image', img) 
-  
-# Maintain output window utill
-# user presses a key
-#cv2.waitKey(0)        
-  
-# Destroying present windows on screen
-#cv2.destroyAllWindows() 
+testList = []
+timg = color.rgb2gray(timg)
+
+count = 0
+for i in timg:
+    for j in i:
+        if(j < limit):
+            count += 1
+            
+print(count, bruh)
+testList.append(count)   
+
+plt.scatter(testList, 0, s=100) 
+
+    
