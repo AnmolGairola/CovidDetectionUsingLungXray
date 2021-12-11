@@ -45,9 +45,11 @@ listofones = [0] * len(covidList)
 listofzeros = [0] * len(normalList)
 
 
-plt.scatter(covidList, listofones)
-plt.scatter(normalList, listofzeros)
-plt.scatter(min(normalList),0,s=50,c="red")
+lo = plt.scatter(covidList, listofones)
+ll = plt.scatter(normalList, listofzeros)
+lp = plt.scatter(min(normalList),0,s=50,c="red")
+
+
 
 #test here -------------------------------------------------------------------
 
@@ -65,7 +67,9 @@ for i in timg:
 print(count, bruh)
 testList.append(count)   
 
-plt.scatter(testList, 0, s=100) 
+lk = plt.scatter(testList, 0, s=100) 
+plt.legend((lo, ll, lp, lk),
+           ('Covid positive', 'normal', 'separation point', 'Image'))
 
 if testList[0] < min(normalList):
     print("Covid positive")
