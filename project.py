@@ -76,5 +76,7 @@ if testList[0] < min(normalList):
 
 else:
     print("covid negative")
+    
+print(min(normalList))
 
     
